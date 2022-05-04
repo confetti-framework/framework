@@ -1,4 +1,4 @@
-module github.com/confetti-framework/support
+module github.com/confetti-framework/framework/support
 
 go 1.17
 

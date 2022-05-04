@@ -4,9 +4,9 @@ go 1.17
 
 require (
 	github.com/confetti-framework/baker v1.1.1
-	github.com/confetti-framework/framework/contract v0.0.1
+	github.com/confetti-framework/framework/contract v1.0.0
 	github.com/confetti-framework/errors v0.12.0
-	github.com/confetti-framework/framework/support v0.0.1
+	github.com/confetti-framework/framework/support v1.0.0
 	github.com/confetti-framework/syslog v0.1.1
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/google/uuid v1.3.0
@@ -54,6 +54,6 @@ require (
 )
 
 replace (
-	github.com/confetti-framework/framework/support v0.0.1 =>  ../support
-    github.com/confetti-framework/framework/contract v0.0.1  => ../contract
+	github.com/confetti-framework/framework/support v1.0.0 =>  ../support
+    github.com/confetti-framework/framework/contract v1.0.0  => ../contract
 )
