@@ -4,9 +4,9 @@ go 1.18
 
 require (
 	github.com/confetti-framework/baker v1.1.1
-	github.com/confetti-framework/framework/contract v0.29.0-beta
+	github.com/confetti-framework/framework/contract v0.29.1-beta
 	github.com/confetti-framework/errors v0.12.0
-	github.com/confetti-framework/framework/support v0.29.0-beta
+	github.com/confetti-framework/framework/support v0.29.1-beta
 	github.com/confetti-framework/syslog v0.1.1
 	github.com/go-sql-driver/mysql v1.6.0
 	github.com/google/uuid v1.3.0
@@ -51,9 +51,4 @@ require (
 	golang.org/x/tools v0.1.9 // indirect
 	golang.org/x/xerrors v0.0.0-20200804184101-5ec99f83aff1 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
-)
-
-replace (
-	github.com/confetti-framework/framework/support v0.29.0-beta =>  ../support
-    github.com/confetti-framework/framework/contract v0.29.0-beta  => ../contract
 )
