@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	github.com/confetti-framework/errors v0.11.0 // indirect
-	github.com/confetti-framework/framework/support v1.0.0
+	github.com/confetti-framework/framework/support v0.29.0
 	github.com/confetti-framework/syslog v0.1.1
 	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/jedib0t/go-pretty/v6 v6.2.1
@@ -22,5 +22,5 @@ require (
 
 
 replace (
-	github.com/confetti-framework/framework/support v1.0.0 => ../support
+	github.com/confetti-framework/framework/support v0.29.0 => ../support
 )
