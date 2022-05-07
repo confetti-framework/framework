@@ -2,8 +2,8 @@ package db
 
 import (
 	"github.com/confetti-framework/framework/contract/inter"
-	"github.com/confetti-framework/foundation"
-	"github.com/confetti-framework/foundation/db"
+	"github.com/confetti-framework/framework/foundation"
+	"github.com/confetti-framework/framework/foundation/db"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

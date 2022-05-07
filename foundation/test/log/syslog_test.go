@@ -3,7 +3,7 @@ package log
 import (
 	"encoding/csv"
 	"fmt"
-	"github.com/confetti-framework/foundation/loggers"
+	"github.com/confetti-framework/framework/foundation/loggers"
 	"github.com/confetti-framework/syslog"
 	"github.com/confetti-framework/syslog/log_level"
 	"github.com/stretchr/testify/require"

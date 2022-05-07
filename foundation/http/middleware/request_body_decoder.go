@@ -2,8 +2,8 @@ package middleware
 
 import (
 	"github.com/confetti-framework/framework/contract/inter"
-	"github.com/confetti-framework/foundation/encoder"
-	"github.com/confetti-framework/foundation/http/http_helper"
+	"github.com/confetti-framework/framework/foundation/encoder"
+	"github.com/confetti-framework/framework/foundation/http/http_helper"
 )
 
 type RequestBodyDecoder struct{}

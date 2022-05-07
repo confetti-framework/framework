@@ -48,7 +48,7 @@ func Test_route_list_show_one_route(t *testing.T) {
 	require.Equal(t, inter.Success, code)
 	result := TrimDoubleSpaces(writer.String())
 	require.Contains(t, result, "\x1b[33mMETHOD\x1b[0m \x1b[33mURI\x1b[0m \x1b[33mCONTROLLER\x1b[0m \x1b[33mNAME\x1b[0m")
-	require.Contains(t, result, "POST /api/users github.com/confetti-framework/foundation/test/console.storeUsers users.store")
+	require.Contains(t, result, "POST /api/users github.com/confetti-framework/framework/foundation/test/console.storeUsers users.store")
 }
 
 func Test_route_list_shows_multiple_routes(t *testing.T) {
@@ -71,8 +71,8 @@ func Test_route_list_shows_multiple_routes(t *testing.T) {
 	require.Equal(t, inter.Success, code)
 	result := TrimDoubleSpaces(writer.String())
 	require.Contains(t, result, "\x1b[33mMETHOD\x1b[0m \x1b[33mURI\x1b[0m \x1b[33mCONTROLLER\x1b[0m \x1b[33mNAME\x1b[0m")
-	require.Contains(t, result, "PATCH /api github.com/confetti-framework/foundation/test/console.Test_route_list_shows_multiple_routes.func1")
-	require.Contains(t, result, "POST /api/users github.com/confetti-framework/foundation/test/console.storeUsers users.store")
+	require.Contains(t, result, "PATCH /api github.com/confetti-framework/framework/foundation/test/console.Test_route_list_shows_multiple_routes.func1")
+	require.Contains(t, result, "POST /api/users github.com/confetti-framework/framework/foundation/test/console.storeUsers users.store")
 }
 
 func Test_route_list_with_head(t *testing.T) {
