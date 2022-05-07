@@ -1,7 +1,7 @@
 package encode
 
 import (
-	"github.com/confetti-framework/foundation/encoder"
+	"github.com/confetti-framework/framework/foundation/encoder"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

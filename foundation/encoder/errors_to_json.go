@@ -1,9 +1,9 @@
 package encoder
 
 import (
-	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/support/str"
+	"github.com/confetti-framework/framework/support/str"
 )
 
 type ErrorsToJson struct {

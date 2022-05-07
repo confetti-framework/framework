@@ -1,8 +1,8 @@
 package lifecycle
 
 import (
-	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/foundation"
+	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/foundation"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

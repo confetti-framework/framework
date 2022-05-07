@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/foundation"
-	"github.com/confetti-framework/foundation/console"
-	"github.com/confetti-framework/foundation/console/facade"
+	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/foundation"
+	"github.com/confetti-framework/framework/foundation/console"
+	"github.com/confetti-framework/framework/foundation/console/facade"
 	"github.com/spf13/cast"
 	"github.com/stretchr/testify/require"
 )

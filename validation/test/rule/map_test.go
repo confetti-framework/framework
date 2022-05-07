@@ -2,7 +2,7 @@ package rule
 
 import (
 	"github.com/confetti-framework/framework/support"
-	"github.com/confetti-framework/validation/rule"
+	"github.com/confetti-framework/framework/validation/rule"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

@@ -2,7 +2,7 @@ package console
 
 import (
 	"github.com/confetti-framework/baker"
-	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/framework/contract/inter"
 	"os"
 )
 

@@ -1,7 +1,7 @@
 package env
 
 import (
-	"github.com/confetti-framework/support"
+	"github.com/confetti-framework/framework/support"
 	"os"
 )
 

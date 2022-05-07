@@ -2,7 +2,7 @@ package log
 
 import (
 	standardErrors "errors"
-	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/framework/contract/inter"
 	supportErrors "github.com/confetti-framework/errors"
 	"github.com/confetti-framework/foundation/decorator/response_decorator"
 	"github.com/confetti-framework/foundation/http/outcome"

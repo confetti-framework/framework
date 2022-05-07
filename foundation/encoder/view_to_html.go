@@ -1,9 +1,9 @@
 package encoder
 
 import (
-	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/foundation/http/view_helper"
+	"github.com/confetti-framework/framework/foundation/http/view_helper"
 )
 
 type ViewToHtml struct{}

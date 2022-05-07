@@ -2,8 +2,8 @@ package console
 
 import (
 	"fmt"
-	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/foundation/console"
+	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/foundation/console"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
@@ -66,6 +66,7 @@ type structWithMultipleFields struct {
 	DryRun   bool `short:"dr" flag:"dry-run"`
 	SendMail bool `short:"sm" flag:"send-mail"`
 }
+
 func (s structWithMultipleFields) Name() string        { return "test" }
 func (s structWithMultipleFields) Description() string { return "test" }
 func (s structWithMultipleFields) Handle(c inter.Cli) inter.ExitCode {

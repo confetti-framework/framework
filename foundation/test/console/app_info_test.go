@@ -5,8 +5,8 @@ package console
 
 import (
 	"bytes"
-	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/foundation/console"
+	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/foundation/console"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

@@ -2,8 +2,8 @@ package routing
 
 import (
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/foundation/http/outcome"
-	"github.com/confetti-framework/support/caller"
+	"github.com/confetti-framework/framework/foundation/http/outcome"
+	"github.com/confetti-framework/framework/support/caller"
 	"github.com/stretchr/testify/require"
 	"net/http"
 	"testing"

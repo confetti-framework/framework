@@ -1,6 +1,6 @@
 package console
 
-import "github.com/confetti-framework/contract/inter"
+import "github.com/confetti-framework/framework/contract/inter"
 
 var FoundationCommands = []inter.Command{
 	AppInfo{},

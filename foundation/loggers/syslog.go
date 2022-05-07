@@ -3,7 +3,7 @@ package loggers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/errors"
 	"github.com/confetti-framework/syslog"
 	"github.com/confetti-framework/syslog/log_level"

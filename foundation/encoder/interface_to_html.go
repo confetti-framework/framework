@@ -1,7 +1,7 @@
 package encoder
 
 import (
-	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/errors"
 	"github.com/spf13/cast"
 )

@@ -1,7 +1,7 @@
 package inter
 
 import (
-	"github.com/confetti-framework/framework/syslog/log_level"
+	"github.com/confetti-framework/syslog/log_level"
 )
 
 // Logger This interface is the interface you should use to add a logger yourself.

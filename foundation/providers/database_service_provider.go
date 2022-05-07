@@ -1,8 +1,8 @@
 package providers
 
 import (
-	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/errors"
+	"github.com/confetti-framework/framework/contract/inter"
 )
 
 type DatabaseServiceProvider struct {
@@ -17,7 +17,7 @@ func (c DatabaseServiceProvider) Boot(container inter.Container) inter.Container
 		}
 
 		if err = connection.Pool().Ping(); err != nil {
-			panic(errors.Wrap(err, "can't connect with connection " + name))
+			panic(errors.Wrap(err, "can't connect with connection "+name))
 		}
 	}
 

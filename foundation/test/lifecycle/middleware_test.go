@@ -3,12 +3,12 @@ package lifecycle
 import (
 	"testing"
 
-	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/foundation"
-	"github.com/confetti-framework/foundation/http"
-	"github.com/confetti-framework/foundation/http/middleware"
-	"github.com/confetti-framework/foundation/http/outcome"
-	"github.com/confetti-framework/foundation/http/routing"
+	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/foundation"
+	"github.com/confetti-framework/framework/foundation/http"
+	"github.com/confetti-framework/framework/foundation/http/middleware"
+	"github.com/confetti-framework/framework/foundation/http/outcome"
+	"github.com/confetti-framework/framework/foundation/http/routing"
 	"github.com/stretchr/testify/require"
 )
 

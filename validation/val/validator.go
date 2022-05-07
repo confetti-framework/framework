@@ -1,18 +1,18 @@
 package val
 
 import (
-	"github.com/confetti-framework/contract/inter"
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/support"
-	rules "github.com/confetti-framework/validation/rule"
-	"github.com/confetti-framework/validation/val_errors"
+	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/support"
+	rules "github.com/confetti-framework/framework/validation/rule"
+	"github.com/confetti-framework/framework/validation/val_errors"
 )
 
 func Validate(app inter.AppReader, input interface{}, verifications ...Verification) []error {
 	result := []error{}
-	value, err := support.NewValueE(input)
-	if err != nil {
-		return append(result, err)
+	value := support.NewValue(input)
+	if value.Error() != nil {
+		return append(result, value.Error())
 	}
 	for _, verification := range verifications {
 		verification.app = app

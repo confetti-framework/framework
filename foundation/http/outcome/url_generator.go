@@ -2,12 +2,12 @@ package outcome
 
 import (
 	"fmt"
-	"github.com/confetti-framework/contract/inter"
+	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/errors"
 	"github.com/confetti-framework/foundation/decorator/route_decorator"
 	"github.com/confetti-framework/foundation/http/http_helper"
 	"github.com/confetti-framework/foundation/http/method"
-	"github.com/confetti-framework/support"
+	"github.com/confetti-framework/framework/support"
 )
 
 type Parameters map[string]interface{}

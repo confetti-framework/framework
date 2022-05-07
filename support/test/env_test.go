@@ -1,7 +1,7 @@
 package test
 
 import (
-	"github.com/confetti-framework/support/env"
+	"github.com/confetti-framework/framework/support/env"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

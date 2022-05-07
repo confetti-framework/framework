@@ -1,7 +1,7 @@
 package rule
 
 import (
-	"github.com/confetti-framework/support"
+	"github.com/confetti-framework/framework/support"
 	"github.com/spf13/cast"
 	"reflect"
 )

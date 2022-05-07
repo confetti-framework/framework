@@ -2,9 +2,9 @@ package service
 
 import (
 	"flag"
-	"github.com/confetti-framework/contract/inter"
-	"github.com/confetti-framework/foundation/console/flag_type"
-	"github.com/confetti-framework/support"
+	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/foundation/console/flag_type"
+	"github.com/confetti-framework/framework/support"
 	"reflect"
 )
 

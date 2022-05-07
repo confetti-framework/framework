@@ -3,7 +3,7 @@
 package console
 
 import (
-	"github.com/confetti-framework/foundation/console/facade"
+	"github.com/confetti-framework/framework/foundation/console/facade"
 	"github.com/stretchr/testify/require"
 	"io/ioutil"
 	"strings"

@@ -1,7 +1,7 @@
 package test
 
 import (
-	"github.com/confetti-framework/support/caller"
+	"github.com/confetti-framework/framework/support/caller"
 	"github.com/stretchr/testify/require"
 	"testing"
 )
