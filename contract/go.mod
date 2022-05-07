@@ -1,6 +1,6 @@
 module github.com/confetti-framework/framework/contract
 
-go 1.17
+go 1.18
 
 require (
 	github.com/confetti-framework/errors v0.11.0 // indirect

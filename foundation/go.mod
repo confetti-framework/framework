@@ -1,6 +1,6 @@
 module github.com/confetti-framework/framework/foundation
 
-go 1.17
+go 1.18
 
 require (
 	github.com/confetti-framework/baker v1.1.1
