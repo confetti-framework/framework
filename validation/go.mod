@@ -3,9 +3,9 @@ module github.com/confetti-framework/framework/validation
 go 1.17
 
 require (
-	github.com/confetti-framework/framework/contract v0.29.1-beta
+	github.com/confetti-framework/framework/contract v0.29.1
 	github.com/confetti-framework/errors v0.11.0-rc.1
-	github.com/confetti-framework/framework/support v0.29.1-beta
+	github.com/confetti-framework/framework/support v0.29.1
 	github.com/confetti-framework/syslog v0.1.0-rc
 	github.com/spf13/cast v1.3.1
 	github.com/stretchr/testify v1.6.1
