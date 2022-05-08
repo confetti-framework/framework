@@ -3,8 +3,8 @@ package mock
 import (
 	_ "embed"
 	"fmt"
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/errors"
+	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/support/str"
 	"golang.org/x/text/language"
 	"strings"

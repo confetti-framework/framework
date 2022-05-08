@@ -131,7 +131,7 @@ func (v Value) GetE(key string) (Value, error) {
 
 // A value can contain a collection.
 func (v Value) Collection() Collection {
-	if  err, isPre := v.source.(nonValueError); isPre {
+	if err, isPre := v.source.(nonValueError); isPre {
 		panic(err)
 	}
 
@@ -155,7 +155,7 @@ func (v Value) Map() Map {
 
 func (v Value) MapE() (Map, error) {
 	source := v.source
-	if  err, isPre := source.(nonValueError); isPre {
+	if err, isPre := source.(nonValueError); isPre {
 		return Map{}, errors.Unwrap(err)
 	}
 
@@ -181,7 +181,7 @@ func (v Value) StringE() (string, error) {
 	var err error
 
 	source := v.source
-	if  err, isPre := source.(nonValueError); isPre {
+	if err, isPre := source.(nonValueError); isPre {
 		return "", errors.Unwrap(err)
 	}
 
@@ -211,7 +211,7 @@ func (v Value) IntE() (int, error) {
 	var err error
 
 	source := v.source
-	if  err, isPre := source.(nonValueError); isPre {
+	if err, isPre := source.(nonValueError); isPre {
 		return 0, errors.Unwrap(err)
 	}
 
@@ -243,7 +243,7 @@ func (v Value) FloatE() (float64, error) {
 	var err error
 
 	source := v.source
-	if  err, isPre := source.(nonValueError); isPre {
+	if err, isPre := source.(nonValueError); isPre {
 		return 0, errors.Unwrap(err)
 	}
 
@@ -360,7 +360,7 @@ func (v Value) OnlyE(keys ...string) (Value, error) {
 }
 
 func (v Value) Error() error {
-	if  err, isPre := v.source.(nonValueError); isPre {
+	if err, isPre := v.source.(nonValueError); isPre {
 		return errors.Unwrap(err)
 	}
 	return nil

@@ -4,7 +4,7 @@ import (
 	"github.com/confetti-framework/framework/contract/inter"
 )
 
-type LogClear struct {}
+type LogClear struct{}
 
 func (l LogClear) Name() string {
 	return "log:clear"

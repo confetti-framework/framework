@@ -13,6 +13,6 @@ func (i *Int) Set(s string) error {
 	return err
 }
 
-func (i *Int) Get() interface{} {return int(*i) }
+func (i *Int) Get() interface{} { return int(*i) }
 
 func (i *Int) String() string { return strconv.Itoa(int(*i)) }

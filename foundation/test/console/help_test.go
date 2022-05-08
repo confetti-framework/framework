@@ -9,7 +9,7 @@ import (
 
 func Test_help_command(t *testing.T) {
 	output, app := setUp()
-	app.Bind("config.App.OsArgs", []interface{}{"/exe/main",  "the_name", "-h"})
+	app.Bind("config.App.OsArgs", []interface{}{"/exe/main", "the_name", "-h"})
 
 	code := console.Kernel{
 		App:      app,

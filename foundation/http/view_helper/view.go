@@ -2,8 +2,8 @@ package view_helper
 
 import (
 	"bytes"
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/errors"
+	"github.com/confetti-framework/framework/contract/inter"
 	"html/template"
 )
 
