@@ -45,7 +45,7 @@ func Test_index_with_one_command(t *testing.T) {
 func Test_command_suggestions_on_failed_command(t *testing.T) {
 	commands := []inter.Command{aCommand{}, bCommand{}}
 
-	t.Run("check with mutliple suggestions", func(t *testing.T) {
+	t.Run("check with multiple suggestions", func(t *testing.T) {
 		output, app := setUp()
 		app.Bind("config.App.OsArgs", []interface{}{"/main", "com"})
 		rc := ioutil.NopCloser(strings.NewReader(""))
