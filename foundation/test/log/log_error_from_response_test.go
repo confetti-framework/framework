@@ -3,7 +3,7 @@ package log
 import (
 	standardErrors "errors"
 	supportErrors "github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/decorator/response_decorator"
 	"github.com/confetti-framework/framework/foundation/http/outcome"
 	"github.com/confetti-framework/framework/foundation/loggers"

@@ -1,6 +1,6 @@
 package response_decorator
 
-import "github.com/confetti-framework/framework/contract/inter"
+import "github.com/confetti-framework/framework/inter"
 
 type Handler struct {
 	Decorators []inter.ResponseDecorator

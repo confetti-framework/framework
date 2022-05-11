@@ -2,7 +2,7 @@ package service
 
 import (
 	"fmt"
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/support"
 	"github.com/jedib0t/go-pretty/v6/table"
 )

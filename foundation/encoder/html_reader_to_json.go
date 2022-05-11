@@ -3,7 +3,7 @@ package encoder
 import (
 	"fmt"
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"reflect"
 )
 

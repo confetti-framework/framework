@@ -3,7 +3,7 @@ package service
 import (
 	"flag"
 	"fmt"
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"reflect"
 	"strings"
 )

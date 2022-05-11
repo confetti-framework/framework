@@ -2,7 +2,7 @@ package encoder
 
 import (
 	"encoding/json"
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 )
 
 type InterfaceToJson struct{}

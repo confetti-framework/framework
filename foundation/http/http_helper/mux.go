@@ -1,7 +1,7 @@
 package http_helper
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/gorilla/mux"
 )
 

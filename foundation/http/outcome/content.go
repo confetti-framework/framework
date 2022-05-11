@@ -1,7 +1,7 @@
 package outcome
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/errors"
 	"github.com/confetti-framework/framework/support"
 	"io/ioutil"

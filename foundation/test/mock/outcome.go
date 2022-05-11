@@ -1,8 +1,8 @@
 package mock
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation/encoder"
+	"github.com/confetti-framework/framework/inter"
 )
 
 var JsonEncoders = []inter.Encoder{

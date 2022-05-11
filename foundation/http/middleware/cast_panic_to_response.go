@@ -2,8 +2,8 @@ package middleware
 
 import (
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation/http/http_helper"
+	"github.com/confetti-framework/framework/inter"
 )
 
 type PanicToResponse struct{}

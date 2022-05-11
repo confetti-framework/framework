@@ -2,8 +2,8 @@ package outcome
 
 import (
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation/encoder"
+	"github.com/confetti-framework/framework/inter"
 	"net/http"
 	"strings"
 )

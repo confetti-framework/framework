@@ -7,7 +7,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation"
 	"github.com/confetti-framework/framework/foundation/console"
 	"github.com/confetti-framework/framework/foundation/console/facade"

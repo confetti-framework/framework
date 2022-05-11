@@ -4,9 +4,9 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation/console"
 	"github.com/confetti-framework/framework/foundation/http/routing"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/stretchr/testify/require"
 )
 

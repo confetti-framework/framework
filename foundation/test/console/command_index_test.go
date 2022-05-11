@@ -4,7 +4,7 @@ package console
 
 import (
 	"flag"
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/console"
 	"github.com/confetti-framework/framework/foundation/console/facade"
 	"github.com/confetti-framework/framework/foundation/console/service"

@@ -1,7 +1,7 @@
 package container_decorator
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 )
 
 type Handler struct {

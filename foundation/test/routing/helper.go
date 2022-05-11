@@ -1,10 +1,10 @@
 package routing
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation"
 	"github.com/confetti-framework/framework/foundation/http"
 	"github.com/confetti-framework/framework/foundation/test/mock"
+	"github.com/confetti-framework/framework/inter"
 )
 
 func emptyController() func(request inter.Request) inter.Response {

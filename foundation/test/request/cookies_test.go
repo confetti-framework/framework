@@ -1,8 +1,8 @@
 package request
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation/http"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/stretchr/testify/require"
 	net "net/http"
 	"testing"

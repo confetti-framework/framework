@@ -1,12 +1,12 @@
 package routing
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation"
 	"github.com/confetti-framework/framework/foundation/http"
 	"github.com/confetti-framework/framework/foundation/http/method"
 	"github.com/confetti-framework/framework/foundation/http/outcome"
 	"github.com/confetti-framework/framework/foundation/http/routing"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

@@ -2,7 +2,7 @@ package outcome
 
 import (
 	"bytes"
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"html/template"
 	net "net/http"
 )

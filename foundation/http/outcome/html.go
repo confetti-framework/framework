@@ -1,7 +1,7 @@
 package outcome
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"net/http"
 )
 

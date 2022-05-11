@@ -2,7 +2,7 @@ package val
 
 import (
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/support"
 	rules "github.com/confetti-framework/framework/validation/rule"
 	"github.com/confetti-framework/framework/validation/val_errors"

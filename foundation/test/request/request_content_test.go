@@ -2,7 +2,6 @@ package request
 
 import (
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation"
 	"github.com/confetti-framework/framework/foundation/encoder"
 	"github.com/confetti-framework/framework/foundation/http"
@@ -11,6 +10,7 @@ import (
 	"github.com/confetti-framework/framework/foundation/http/middleware"
 	"github.com/confetti-framework/framework/foundation/http/outcome"
 	"github.com/confetti-framework/framework/foundation/test/mock"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/support"
 	"github.com/gorilla/mux"
 	"github.com/stretchr/testify/require"

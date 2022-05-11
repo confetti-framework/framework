@@ -3,9 +3,9 @@ package foundation
 import (
 	"fmt"
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation/db"
 	"github.com/confetti-framework/framework/foundation/loggers"
+	"github.com/confetti-framework/framework/inter"
 )
 
 type Application struct {

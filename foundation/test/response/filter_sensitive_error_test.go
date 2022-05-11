@@ -2,12 +2,12 @@ package response
 
 import (
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/contract/inter"
 	"github.com/confetti-framework/framework/foundation"
 	"github.com/confetti-framework/framework/foundation/decorator/response_decorator"
 	"github.com/confetti-framework/framework/foundation/encoder"
 	"github.com/confetti-framework/framework/foundation/http/outcome"
 	"github.com/confetti-framework/framework/foundation/test/mock"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/stretchr/testify/require"
 	"html/template"
 	net "net/http"

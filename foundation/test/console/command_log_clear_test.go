@@ -2,7 +2,7 @@ package console
 
 import (
 	"bytes"
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/console"
 	"github.com/confetti-framework/framework/foundation/loggers"
 	"github.com/confetti-framework/syslog/log_level"

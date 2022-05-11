@@ -1,7 +1,7 @@
 package middleware
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 )
 
 type DefaultResponseOutcome struct {

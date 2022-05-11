@@ -1,6 +1,6 @@
 package routing
 
-import "github.com/confetti-framework/framework/contract/inter"
+import "github.com/confetti-framework/framework/inter"
 
 func createRoutes(methods []string, uri string, controller inter.Controller) *RouteCollection {
 	routes := NewRouteCollection()

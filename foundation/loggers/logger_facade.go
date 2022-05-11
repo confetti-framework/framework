@@ -1,7 +1,7 @@
 package loggers
 
 import (
-	"github.com/confetti-framework/framework/contract/inter"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/syslog/log_level"
 )
 
