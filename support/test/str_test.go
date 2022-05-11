@@ -191,3 +191,14 @@ func Test_Start(t *testing.T) {
 	require.Equal(t, "/test/string", str.Start("/test/string", "/"))
 	require.Equal(t, "/test/string", str.Start("//test/string", "/"))
 }
+
+func Test_Length(t *testing.T) {
+	require.Equal(t, 11, str.Length("foo bar baz"))
+	require.Equal(t, 0, str.Length(""))
+}
+
+func Test_Title(t *testing.T) {
+	// TODO: add more tests
+	require.Equal(t, "New York", str.Title("new york"))
+	require.Equal(t, "Νεα Υορκη", str.Title("νΕα υΟρΚη"))
+}

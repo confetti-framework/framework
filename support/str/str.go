@@ -156,6 +156,14 @@ func Start(value string, prefix string) string {
 	return prefix + re.ReplaceAllString(value, "")
 }
 
+func Length(value string) int {
+	return len(value)
+}
+
+func Title(value string) string {
+	return strings.Title(strings.ToLower(value)) // This needs consideration
+}
+
 //
 //func Title(value string) string {
 //  // TODO
@@ -167,10 +175,6 @@ func Start(value string, prefix string) string {
 // 	return ""
 // }
 //
-// func Length(value string) int {
-// 	// TODO
-// 	return 0
-// }
 //
 // func LimitCharacters(value string, limit int, end string) string{
 // 	// TODO
