@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"github.com/confetti-framework/errors"
 	"github.com/go-sql-driver/mysql"
+	gormMysql "gorm.io/driver/mysql"
+	"gorm.io/gorm"
 	"time"
 )
 
@@ -42,6 +44,8 @@ type MySQL struct {
 	// underlying connections. It's safe for concurrent use by multiple
 	// goroutines.
 	pool *sql.DB
+
+	dialector gorm.Dialector
 }
 
 func (m *MySQL) Open() error {
@@ -54,7 +58,25 @@ func (m *MySQL) Open() error {
 
 	m.pool = pool
 
+	m.dialector = gormMysql.New(gormMysql.Config{
+		Conn: m.pool,
+	})
+
 	return err
+}
+
+func (m MySQL) Dialector() gorm.Dialector {
+	return m.dialector
+}
+
+func (m MySQL) DB() *gorm.DB {
+	db, err := gorm.Open(m.dialector)
+
+	if err != nil {
+		panic(err)
+	}
+
+	return db
 }
 
 func (m MySQL) Pool() *sql.DB {

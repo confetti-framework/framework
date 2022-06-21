@@ -6,6 +6,8 @@ import (
 	"github.com/jackc/pgconn"
 	"github.com/jackc/pgx/v4"
 	"github.com/jackc/pgx/v4/stdlib"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 	"time"
 )
 
@@ -74,6 +76,8 @@ type PostgreSQL struct {
 	// underlying connections. It's safe for concurrent use by multiple
 	// goroutines.
 	pool *sql.DB
+
+	dialector gorm.Dialector
 }
 
 func (m *PostgreSQL) Open() error {
@@ -88,9 +92,28 @@ func (m *PostgreSQL) Open() error {
 	pool := stdlib.OpenDB(*config)
 
 	ConfigConnection(pool, m.ConnMaxLifetime, m.MaxOpenConnections, m.MaxIdleConnections)
+
 	m.pool = pool
 
+	m.dialector = postgres.New(postgres.Config{
+		Conn: m.pool,
+	})
+
 	return nil
+}
+
+func (m PostgreSQL) Dialector() gorm.Dialector {
+	return m.dialector
+}
+
+func (m PostgreSQL) DB() *gorm.DB {
+	db, err := gorm.Open(m.dialector)
+
+	if err != nil {
+		panic(err)
+	}
+
+	return db
 }
 
 func (m PostgreSQL) Pool() *sql.DB {

@@ -2,10 +2,10 @@ package db
 
 import (
 	"context"
-	"database/sql"
 	"github.com/confetti-framework/errors"
 	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/support"
+	"gorm.io/gorm"
 )
 
 type Database struct {
@@ -23,7 +23,7 @@ func (d Database) Connection() inter.Connection {
 
 // Exec executes a query without returning any rows.
 // The args are for any placeholder parameters in the query.
-func (d Database) Exec(sql string, args ...interface{}) sql.Result {
+func (d Database) Exec(sql string, args ...interface{}) *gorm.DB {
 	result, err := d.ExecE(sql, args...)
 	if err != nil {
 		panic(err)
@@ -33,17 +33,21 @@ func (d Database) Exec(sql string, args ...interface{}) sql.Result {
 
 // ExecE executes a query without returning any rows.
 // The args are for any placeholder parameters in the query.
-func (d Database) ExecE(sql string, args ...interface{}) (sql.Result, error) {
+func (d Database) ExecE(sql string, args ...interface{}) (*gorm.DB, error) {
 	connection := d.Connection()
 	source := d.app.Make("request").(inter.Request).Source()
 
 	ctx, cancel := context.WithTimeout(source.Context(), connection.Timeout())
 	defer cancel()
 
-	execContext, err := connection.Pool().ExecContext(ctx, sql, args...)
+	db := connection.DB().WithContext(ctx)
+
+	execContext := db.Exec(sql, args...)
+	err := execContext.Error
 	if err != nil {
 		err = errors.WithMessage(errors.WithStack(err), "can't execute database query")
 	}
+
 	return execContext, err
 }
 
@@ -68,10 +72,15 @@ func (d Database) QueryE(sql string, args ...interface{}) (support.Collection, e
 	ctx, cancel := context.WithTimeout(source.Context(), connection.Timeout())
 	defer cancel()
 
-	rows, err := connection.Pool().QueryContext(ctx, sql, args...)
+	db := connection.DB().WithContext(ctx)
+
+	rows, err := db.Raw(sql, args...).Rows()
+	defer rows.Close()
+
 	if err != nil {
 		return nil, errors.WithStack(err)
 	}
+
 	cols, err := rows.Columns()
 	if err != nil {
 		return nil, errors.WithStack(err)
