@@ -45,42 +45,31 @@ type MySQL struct {
 	// goroutines.
 	pool *sql.DB
 
-	dialector gorm.Dialector
+	db *gorm.DB
 }
 
 func (m *MySQL) Open() error {
-	pool, err := sql.Open("mysql", m.NetworkAddress())
+	connection, err := gorm.Open(gormMysql.Open(m.NetworkAddress()), &gorm.Config{})
 	if err != nil {
 		return errors.Wrap(err, "can't open MySQL connection")
 	}
 
+	pool, err := connection.DB()
+
 	ConfigConnection(pool, m.ConnMaxLifetime, m.MaxOpenConnections, m.MaxIdleConnections)
 
+	m.db = connection
 	m.pool = pool
-
-	m.dialector = gormMysql.New(gormMysql.Config{
-		Conn: m.pool,
-	})
 
 	return err
 }
 
-func (m MySQL) Dialector() gorm.Dialector {
-	return m.dialector
+func (m MySQL) Pool() *sql.DB {
+	return m.pool
 }
 
 func (m MySQL) DB() *gorm.DB {
-	db, err := gorm.Open(m.dialector)
-
-	if err != nil {
-		panic(err)
-	}
-
-	return db
-}
-
-func (m MySQL) Pool() *sql.DB {
-	return m.pool
+	return m.db
 }
 
 func (m MySQL) Timeout() time.Duration {
