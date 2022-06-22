@@ -22,3 +22,7 @@ func Tap[V interface{} | any](value V, callback ...func(V)) V {
 
 	return value
 }
+
+func Collect(items ...interface{}) Collection {
+	return NewCollection(items...)
+}
