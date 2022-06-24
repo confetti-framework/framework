@@ -23,11 +23,12 @@ type Database interface {
 	Get() support.Collection
 	GetE() (support.Collection, error)
 	Table(name string, args ...interface{}) Database
+	First(dest interface{}) Database
 	Where(query interface{}, args ...interface{}) Database
 	Exec(sql string, args ...interface{}) Database
-	ExecE(sql string, args ...interface{}) (Database, error)
-	Raw(sql string, args ...interface{}) support.Collection
-	RawE(sql string, args ...interface{}) (support.Collection, error)
+	Raw(sql string, args ...interface{}) Database
+	Error() error
+	RowsAffected() int64
 }
 
 type TypeCast func(ct sql.ColumnType, raw []byte) interface{}
