@@ -49,7 +49,10 @@ func (d Database) Table(name string, args ...interface{}) inter.Database {
 }
 
 func (d Database) First(dest interface{}) inter.Database {
-	ctx, cancel := d.context()
+	connection := d.Connection()
+	source := d.app.Make("request").(inter.Request).Source()
+
+	ctx, cancel := context.WithTimeout(source.Context(), connection.Timeout())
 	defer cancel()
 
 	d.tx = d.tx.WithContext(ctx).First(dest)
