@@ -22,6 +22,10 @@ func (d Database) Connection() inter.Connection {
 	return d.connection
 }
 
+func (d Database) Tx() *gorm.DB {
+	return d.tx
+}
+
 func (d Database) context() (context.Context, context.CancelFunc) {
 	connection := d.Connection()
 	source := d.app.Make("request").(inter.Request).Source()
@@ -48,14 +52,11 @@ func (d Database) Table(name string, args ...interface{}) inter.Database {
 	return d
 }
 
-func (d Database) First(dest interface{}) inter.Database {
-	connection := d.Connection()
-	source := d.app.Make("request").(inter.Request).Source()
-
-	ctx, cancel := context.WithTimeout(source.Context(), connection.Timeout())
+func (d Database) First(dest interface{}) interface{} {
+	ctx, cancel := d.context()
 	defer cancel()
 
-	d.tx = d.tx.WithContext(ctx).First(dest)
+	d.tx.WithContext(ctx).First(dest)
 
 	return d
 }
@@ -121,7 +122,10 @@ func (d Database) Get() support.Collection {
 func (d Database) GetE() (support.Collection, error) {
 	result := support.NewCollection()
 
-	ctx, cancel := d.context()
+	connection := d.Connection()
+	source := d.app.Make("request").(inter.Request).Source()
+
+	ctx, cancel := context.WithTimeout(source.Context(), connection.Timeout())
 	defer cancel()
 
 	d.tx = d.tx.WithContext(ctx)
