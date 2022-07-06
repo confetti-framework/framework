@@ -21,17 +21,21 @@ require (
 	github.com/uniplaces/carbon v0.2.2
 	github.com/vigneshuvi/GoDateFormat v0.0.0-20210204121036-67364dc23c79
 	golang.org/x/text v0.3.7
+	gorm.io/driver/mysql v1.3.4
+	gorm.io/driver/postgres v1.3.7
+	gorm.io/gorm v1.23.6
 )
 
 require (
 	github.com/chzyer/readline v0.0.0-20180603132655-2972be24d48e // indirect
-	github.com/davecgh/go-spew v1.1.1 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
 	github.com/jackc/pgio v1.0.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgproto3/v2 v2.3.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20200714003250-2b9c44734f2b // indirect
 	github.com/jackc/pgtype v1.11.0 // indirect
+	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/jinzhu/now v1.1.4 // indirect
 	github.com/mattn/go-runewidth v0.0.13 // indirect
 	github.com/mitchellh/colorstring v0.0.0-20190213212951-d06e56a500db // indirect
 	github.com/motemen/go-quickfix v0.0.0-20210528191040-5ef99de20668 // indirect

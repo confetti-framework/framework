@@ -3,9 +3,12 @@ package db
 import (
 	"crypto/tls"
 	"database/sql"
+	"github.com/confetti-framework/errors"
 	"github.com/jackc/pgconn"
 	"github.com/jackc/pgx/v4"
 	"github.com/jackc/pgx/v4/stdlib"
+	"gorm.io/driver/postgres"
+	"gorm.io/gorm"
 	"time"
 )
 
@@ -70,14 +73,15 @@ type PostgreSQL struct {
 	// Default MaxOpenConnections
 	MaxIdleConnections int
 
-	// pool is a database handle representing a pool of zero or more
+	// db is a database handle representing a pool of zero or more
 	// underlying connections. It's safe for concurrent use by multiple
 	// goroutines.
 	pool *sql.DB
+
+	db *gorm.DB
 }
 
 func (m *PostgreSQL) Open() error {
-
 	config, err := pgx.ParseConfig("")
 	if err != nil {
 		return err
@@ -88,9 +92,21 @@ func (m *PostgreSQL) Open() error {
 	pool := stdlib.OpenDB(*config)
 
 	ConfigConnection(pool, m.ConnMaxLifetime, m.MaxOpenConnections, m.MaxIdleConnections)
+
+	m.db, err = gorm.Open(postgres.New(postgres.Config{
+		Conn: pool,
+	}))
 	m.pool = pool
 
+	if err != nil {
+		return errors.Wrap(err, "can't open MySQL connection")
+	}
+
 	return nil
+}
+
+func (m PostgreSQL) DB() *gorm.DB {
+	return m.db
 }
 
 func (m PostgreSQL) Pool() *sql.DB {
@@ -105,48 +121,63 @@ func (m *PostgreSQL) setConfig(config *pgx.ConnConfig) {
 	if m.Host != "" {
 		config.Config.Host = m.Host
 	}
+
 	if m.Port != 0 {
 		config.Config.Port = uint16(m.Port)
 	}
+
 	if m.Database != "" {
 		config.Config.Database = m.Database
 	}
+
 	if m.Username != "" {
 		config.Config.User = m.Username
 	}
+
 	if m.Password != "" {
 		config.Config.Password = m.Password
 	}
+
 	if m.TLSConfig != nil {
 		config.Config.TLSConfig = m.TLSConfig
 	}
+
 	if m.ConnectTimeout != 0 {
 		config.Config.ConnectTimeout = m.ConnectTimeout
 	}
+
 	if m.DialFunc != nil {
 		config.Config.DialFunc = m.DialFunc
 	}
+
 	if m.LookupFunc != nil {
 		config.Config.LookupFunc = m.LookupFunc
 	}
+
 	if m.BuildFrontend != nil {
 		config.Config.BuildFrontend = m.BuildFrontend
 	}
+
 	if len(m.RuntimeParams) != 0 {
 		config.Config.RuntimeParams = m.RuntimeParams
 	}
+
 	if len(m.Fallbacks) != 0 {
 		config.Config.Fallbacks = m.Fallbacks
 	}
+
 	if m.ValidateConnect != nil {
 		config.Config.ValidateConnect = m.ValidateConnect
 	}
+
 	if m.AfterConnect != nil {
 		config.Config.AfterConnect = m.AfterConnect
 	}
+
 	if m.OnNotice != nil {
 		config.Config.OnNotice = m.OnNotice
 	}
+
 	if m.OnNotification != nil {
 		config.Config.OnNotification = m.OnNotification
 	}

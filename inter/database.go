@@ -3,6 +3,7 @@ package inter
 import (
 	"database/sql"
 	"github.com/confetti-framework/framework/support"
+	"gorm.io/gorm"
 	"time"
 )
 
@@ -12,16 +13,23 @@ type Cache interface {
 
 type Connection interface {
 	Open() error
+	DB() *gorm.DB
 	Pool() *sql.DB
 	Timeout() time.Duration
 }
 
 type Database interface {
 	Connection() Connection
-	Exec(sql string, args ...interface{}) sql.Result
-	ExecE(sql string, args ...interface{}) (sql.Result, error)
-	Query(sql string, args ...interface{}) support.Collection
-	QueryE(sql string, args ...interface{}) (support.Collection, error)
+	Get() support.Collection
+	GetE() (support.Collection, error)
+	Tx() *gorm.DB
+	Table(name string, args ...interface{}) Database
+	First(dest interface{}) interface{}
+	Where(query interface{}, args ...interface{}) Database
+	Exec(sql string, args ...interface{}) Database
+	Raw(sql string, args ...interface{}) Database
+	Error() error
+	RowsAffected() int64
 }
 
 type TypeCast func(ct sql.ColumnType, raw []byte) interface{}

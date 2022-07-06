@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"github.com/confetti-framework/errors"
 	"github.com/go-sql-driver/mysql"
+	gormMysql "gorm.io/driver/mysql"
+	"gorm.io/gorm"
 	"time"
 )
 
@@ -42,16 +44,21 @@ type MySQL struct {
 	// underlying connections. It's safe for concurrent use by multiple
 	// goroutines.
 	pool *sql.DB
+
+	db *gorm.DB
 }
 
 func (m *MySQL) Open() error {
-	pool, err := sql.Open("mysql", m.NetworkAddress())
+	connection, err := gorm.Open(gormMysql.Open(m.NetworkAddress()), &gorm.Config{})
 	if err != nil {
 		return errors.Wrap(err, "can't open MySQL connection")
 	}
 
+	pool, err := connection.DB()
+
 	ConfigConnection(pool, m.ConnMaxLifetime, m.MaxOpenConnections, m.MaxIdleConnections)
 
+	m.db = connection
 	m.pool = pool
 
 	return err
@@ -59,6 +66,10 @@ func (m *MySQL) Open() error {
 
 func (m MySQL) Pool() *sql.DB {
 	return m.pool
+}
+
+func (m MySQL) DB() *gorm.DB {
+	return m.db
 }
 
 func (m MySQL) Timeout() time.Duration {
