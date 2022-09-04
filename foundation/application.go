@@ -91,7 +91,7 @@ func (a *Application) Log(channels ...string) inter.LoggerFacade {
 	return logger.SetApp(a)
 }
 
-func (a *Application) Db(connectionName ...string) inter.Database {
+func (a *Application) Db(connectionName ...string) *db.Database {
 	openConnections := a.Make("open_connections").(map[string]inter.Connection)
 	connection := openConnections[a.dbConnectionName(connectionName)]
 

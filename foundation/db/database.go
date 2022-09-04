@@ -9,106 +9,17 @@ import (
 )
 
 type Database struct {
+	*gorm.DB
 	connection inter.Connection
 	app        inter.App
-	tx         *gorm.DB
 }
 
 func NewDatabase(app inter.App, connection inter.Connection) *Database {
-	return &Database{app: app, connection: connection, tx: connection.DB()}
+	return &Database{app: app, connection: connection, DB: connection.DB()}
 }
 
 func (d Database) Connection() inter.Connection {
 	return d.connection
-}
-
-func (d Database) Tx() *gorm.DB {
-	return d.tx
-}
-
-func (d Database) context() (context.Context, context.CancelFunc) {
-	connection := d.Connection()
-	source := d.app.Make("request").(inter.Request).Source()
-
-	ctx, cancel := context.WithTimeout(source.Context(), connection.Timeout())
-
-	return ctx, cancel
-}
-
-func (d Database) Error() error {
-	return d.tx.Error
-}
-
-func (d Database) RowsAffected() int64 {
-	return d.tx.RowsAffected
-}
-
-func (d Database) Table(name string, args ...interface{}) inter.Database {
-	ctx, cancel := d.context()
-	defer cancel()
-
-	d.tx = d.tx.WithContext(ctx).Table(name)
-
-	return d
-}
-
-func (d Database) First(dest interface{}) interface{} {
-	ctx, cancel := d.context()
-	defer cancel()
-
-	d.tx.WithContext(ctx).First(dest)
-
-	return d
-}
-
-func (d Database) Where(query interface{}, args ...interface{}) inter.Database {
-	ctx, cancel := d.context()
-	defer cancel()
-
-	d.tx = d.tx.WithContext(ctx).Where(query, args...)
-
-	return d
-}
-
-func (d Database) Count() int64 {
-	ctx, cancel := d.context()
-	defer cancel()
-
-	var count int64
-	d.tx = d.tx.WithContext(ctx).Count(&count)
-
-	return count
-}
-
-func (d Database) Create(value interface{}) inter.Database {
-	ctx, cancel := d.context()
-	defer cancel()
-
-	d.tx = d.tx.WithContext(ctx).Create(value)
-
-	return d
-}
-
-// Exec executes a query without returning any rows.
-// The args are for any placeholder parameters in the query.
-func (d Database) Exec(sql string, args ...interface{}) inter.Database {
-	ctx, cancel := d.context()
-	defer cancel()
-
-	d.tx = d.tx.WithContext(ctx).Exec(sql, args...)
-
-	return d
-}
-
-// Raw executes a query that returns rows or an error, typically a SELECT.
-// The args are for any placeholder parameters in the query.
-func (d Database) Raw(sql string, args ...interface{}) inter.Database {
-	ctx, cancel := d.context()
-	defer cancel()
-
-	d.tx = d.tx.WithContext(ctx).Raw(sql, args...)
-
-	return d
 }
 
 func (d Database) Get() support.Collection {
@@ -128,9 +39,9 @@ func (d Database) GetE() (support.Collection, error) {
 	ctx, cancel := context.WithTimeout(source.Context(), connection.Timeout())
 	defer cancel()
 
-	d.tx = d.tx.WithContext(ctx)
+	d.WithContext(ctx)
 
-	rows, err := d.tx.Rows()
+	rows, err := d.Rows()
 	defer rows.Close()
 
 	if err != nil {

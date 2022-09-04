@@ -1,5 +1,7 @@
 package inter
 
+import "github.com/confetti-framework/framework/foundation/db"
+
 const AppProvider = "app_provider"
 
 type App interface {
@@ -30,5 +32,5 @@ type App interface {
 
 	// Db returns the database facade. If no parameters are provided, it will use
 	// the default connection.
-	Db(connection ...string) Database
+	Db(connection ...string) *db.Database
 }

@@ -18,18 +18,4 @@ type Connection interface {
 	Timeout() time.Duration
 }
 
-type Database interface {
-	Connection() Connection
-	Get() support.Collection
-	GetE() (support.Collection, error)
-	Tx() *gorm.DB
-	Table(name string, args ...interface{}) Database
-	First(dest interface{}) interface{}
-	Where(query interface{}, args ...interface{}) Database
-	Exec(sql string, args ...interface{}) Database
-	Raw(sql string, args ...interface{}) Database
-	Error() error
-	RowsAffected() int64
-}
-
 type TypeCast func(ct sql.ColumnType, raw []byte) interface{}
