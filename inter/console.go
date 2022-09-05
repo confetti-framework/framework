@@ -15,8 +15,8 @@ const (
 )
 
 const (
-	Short = "short"
-	Flag = "flag"
+	Short       = "short"
+	Flag        = "flag"
 	Description = "description"
 )
 

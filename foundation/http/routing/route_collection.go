@@ -2,10 +2,10 @@ package routing
 
 import (
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/decorator/route_decorator"
 	"github.com/confetti-framework/framework/foundation/http/http_helper"
 	"github.com/confetti-framework/framework/foundation/http/outcome"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/gorilla/mux"
 )
 

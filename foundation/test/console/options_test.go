@@ -3,9 +3,9 @@ package console
 import (
 	"testing"
 
-	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/console"
 	"github.com/confetti-framework/framework/foundation/console/service"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/support"
 	"github.com/stretchr/testify/require"
 )
