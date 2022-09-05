@@ -15,4 +15,5 @@ package db
 // 		return append(big.NewInt(int64(i)).Bytes(), byte(1))
 // 	}
 // 	return append(big.NewInt(int64(i)).Bytes(), byte(0))
+
 // }

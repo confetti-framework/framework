@@ -12,9 +12,10 @@ type Database struct {
 	*gorm.DB
 	connection inter.Connection
 	app        inter.App
+	tx         *gorm.DB
 }
 
-func NewDatabase(app inter.App, connection inter.Connection) *Database {
+func NewDatabase(app inter.App, connection inter.Connection) inter.Database {
 	return &Database{app: app, connection: connection, DB: connection.DB()}
 }
 

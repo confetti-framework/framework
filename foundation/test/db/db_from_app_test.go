@@ -34,10 +34,12 @@ func Test_db_other_instance_by_name(t *testing.T) {
 
 func setup() inter.App {
 	app := foundation.NewApp()
+
 	app.Bind("config.Database.Default", "mysql")
 	app.Bind("open_connections", map[string]inter.Connection{
 		"mysql":      &db.MySQL{},
 		"postgresql": &db.PostgreSQL{},
+		"sqlite":     &db.Sqlite{},
 	})
 
 	return app
