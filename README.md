@@ -4,9 +4,9 @@
 
 <p align="center">
 <a href="https://github.com/confetti-framework/framework/actions"><img src="https://github.com/confetti-framework/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://pkg.go.dev/github.com/confetti-framework/framework"><img alt="GitHub go.mod Go version" src="https://img.shields.io/github/go-mod/go-version/confetti-framework/framework"></a>
 <a href="https://goreportcard.com/report/github.com/confetti-framework/framework"><img src="https://goreportcard.com/badge/github.com/confetti-framework/framework"></a>
 <a href="https://pkg.go.dev/github.com/confetti-framework/framework"><img src="https://godoc.org/confetti-framework/framework?status.svg"></a>
+<a href="https://github.com/confetti-framework/framework/blob/main/LICENSE.md"><img src="https://img.shields.io/github/license/confetti-framework/framework" alt="License"></a>
 </p>
 
 ## About Confetti 
