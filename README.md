@@ -1,6 +1,12 @@
 <p align="center">
+  <img src="https://avatars1.githubusercontent.com/u/57274804?s=400&u=058242df13e206950c08efd68a540445ce4da17f&v=4" width="100">
+</p>
+
+<p align="center">
 <a href="https://github.com/confetti-framework/framework/actions"><img src="https://github.com/confetti-framework/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://pkg.go.dev/github.com/confetti-framework/framework"><img alt="GitHub go.mod Go version" src="https://img.shields.io/github/go-mod/go-version/confetti-framework/framework"></a>
+<a href="https://goreportcard.com/report/github.com/confetti-framework/framework"><img src="https://goreportcard.com/badge/github.com/confetti-framework/framework"></a>
+<a href="https://pkg.go.dev/github.com/confetti-framework/framework"><img src="https://godoc.org/confetti-framework/framework?status.svg"></a>
 </p>
 
 ## About Confetti 
