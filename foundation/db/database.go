@@ -12,7 +12,6 @@ type Database struct {
 	*gorm.DB
 	connection inter.Connection
 	app        inter.App
-	tx         *gorm.DB
 }
 
 func NewDatabase(app inter.App, connection inter.Connection) inter.Database {
@@ -82,3 +81,5 @@ func (d Database) GetE() (support.Collection, error) {
 
 	return result, nil
 }
+
+// TODO: create more custom methods

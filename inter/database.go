@@ -31,7 +31,6 @@ type Database interface {
 	InstanceSet(key string, value interface{}) *gorm.DB
 	InstanceGet(key string) (interface{}, bool)
 	AddError(err error) error
-	DB() (*sql.DB, error)
 	SetupJoinTable(model interface{}, field string, joinTable interface{}) error
 	Use(plugin gorm.Plugin) error
 	ToSQL(queryFn func(tx *gorm.DB) *gorm.DB) string
