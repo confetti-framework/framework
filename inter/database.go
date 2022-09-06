@@ -26,7 +26,8 @@ type Database interface {
 	WithContext(ctx context.Context) *gorm.DB
 	Debug() (tx *gorm.DB)
 	Set(key string, value interface{}) *gorm.DB
-	Get(key string) (interface{}, bool)
+	Get() support.Collection
+	GetE() (support.Collection, error)
 	InstanceSet(key string, value interface{}) *gorm.DB
 	InstanceGet(key string) (interface{}, bool)
 	AddError(err error) error
