@@ -12,3 +12,17 @@ func splitKey(key string) (string, []string) {
 func joinRest(rest []string) string {
 	return strings.Join(rest, ".")
 }
+
+func Tap[V interface{} | any](value V, callback ...func(V)) V {
+	if len(callback) > 0 {
+		return value
+	}
+
+	callback[0](value)
+
+	return value
+}
+
+func Collect(items ...interface{}) Collection {
+	return NewCollection(items...)
+}

@@ -3,20 +3,13 @@ package db
 import (
 	"database/sql"
 	"github.com/confetti-framework/errors"
-	"github.com/go-sql-driver/mysql"
-	gormMysql "gorm.io/driver/mysql"
+	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 	"time"
 )
 
-// MySQL 4.1+ see https://github.com/go-sql-driver/mysql/
-type MySQL struct {
-	Host       string
-	Port       int
-	Database   string
-	Username   string
-	Password   string
-	Parameters map[string]string
+type Sqlite struct {
+	Dsn string
 
 	// When the open connection limit is reached, and all connections are in-use,
 	// any new database tasks that your application needs to execute will be forced
@@ -48,8 +41,8 @@ type MySQL struct {
 	db *gorm.DB
 }
 
-func (m *MySQL) Open() error {
-	connection, err := gorm.Open(gormMysql.Open(m.NetworkAddress()), &gorm.Config{})
+func (m *Sqlite) Open() error {
+	connection, err := gorm.Open(sqlite.Open(m.Dsn), &gorm.Config{})
 	if err != nil {
 		return errors.Wrap(err, "can't open MySQL connection")
 	}
@@ -64,28 +57,14 @@ func (m *MySQL) Open() error {
 	return err
 }
 
-func (m MySQL) Pool() *sql.DB {
+func (m *Sqlite) Pool() *sql.DB {
 	return m.pool
 }
 
-func (m MySQL) DB() *gorm.DB {
+func (m *Sqlite) DB() *gorm.DB {
 	return m.db
 }
 
-func (m MySQL) Timeout() time.Duration {
+func (m *Sqlite) Timeout() time.Duration {
 	return m.QueryTimeout
-}
-
-func (m MySQL) NetworkAddress() string {
-	config := mysql.NewConfig()
-	config.User = m.Username
-	config.Passwd = m.Password
-	if m.Host != "" {
-		config.Net = "tcp"
-	}
-	config.Addr = m.Host
-	config.DBName = m.Database
-	config.Params = m.Parameters
-
-	return config.FormatDSN()
 }
