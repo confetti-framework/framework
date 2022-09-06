@@ -1,8 +1,8 @@
 package console
 
 import (
-	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/console"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/stretchr/testify/require"
 	"testing"
 )

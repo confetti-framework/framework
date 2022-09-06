@@ -1,8 +1,8 @@
 package http
 
 import (
-	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/http/middleware"
+	"github.com/confetti-framework/framework/inter"
 )
 
 type Router struct {

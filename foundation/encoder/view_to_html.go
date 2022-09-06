@@ -2,8 +2,8 @@ package encoder
 
 import (
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/http/view_helper"
+	"github.com/confetti-framework/framework/inter"
 )
 
 type ViewToHtml struct{}

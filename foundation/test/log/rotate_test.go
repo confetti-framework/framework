@@ -1,9 +1,9 @@
 package log
 
 import (
-	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation"
 	"github.com/confetti-framework/framework/foundation/loggers"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/syslog/log_level"
 	"github.com/stretchr/testify/require"
 	"github.com/vigneshuvi/GoDateFormat"

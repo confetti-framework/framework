@@ -3,8 +3,8 @@ package http
 import (
 	"bytes"
 	"github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/http/method"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/support"
 	"github.com/gorilla/mux"
 	"io"

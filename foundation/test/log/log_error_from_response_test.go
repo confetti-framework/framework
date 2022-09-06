@@ -3,11 +3,11 @@ package log
 import (
 	standardErrors "errors"
 	supportErrors "github.com/confetti-framework/errors"
-	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/decorator/response_decorator"
 	"github.com/confetti-framework/framework/foundation/http/outcome"
 	"github.com/confetti-framework/framework/foundation/loggers"
 	"github.com/confetti-framework/framework/foundation/test/mock"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/syslog/log_level"
 	"github.com/stretchr/testify/require"
 	"testing"

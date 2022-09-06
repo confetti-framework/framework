@@ -4,10 +4,10 @@ package console
 
 import (
 	"flag"
-	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/console"
 	"github.com/confetti-framework/framework/foundation/console/facade"
 	"github.com/confetti-framework/framework/foundation/console/service"
+	"github.com/confetti-framework/framework/inter"
 	"github.com/stretchr/testify/require"
 	"io/ioutil"
 	"strings"

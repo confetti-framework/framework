@@ -1,9 +1,9 @@
 package routing
 
 import (
-	"github.com/confetti-framework/framework/inter"
 	"github.com/confetti-framework/framework/foundation/http/method"
 	"github.com/confetti-framework/framework/foundation/http/outcome"
+	"github.com/confetti-framework/framework/inter"
 	net "net/http"
 )
 
