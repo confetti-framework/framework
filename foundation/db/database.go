@@ -35,9 +35,9 @@ func (d Database) Exec(sql string, args ...interface{}) sql.Result {
 // The args are for any placeholder parameters in the query.
 func (d Database) ExecE(sql string, args ...interface{}) (sql.Result, error) {
 	connection := d.Connection()
-	source := d.app.Make("request").(inter.Request).Source()
+	ctx := context.Background()
 
-	ctx, cancel := context.WithTimeout(source.Context(), connection.Timeout())
+	ctx, cancel := context.WithTimeout(ctx, connection.Timeout())
 	defer cancel()
 
 	execContext, err := connection.Pool().ExecContext(ctx, sql, args...)
@@ -63,9 +63,9 @@ func (d Database) QueryE(sql string, args ...interface{}) (support.Collection, e
 	result := support.NewCollection()
 
 	connection := d.Connection()
-	source := d.app.Make("request").(inter.Request).Source()
+	ctx := context.Background()
 
-	ctx, cancel := context.WithTimeout(source.Context(), connection.Timeout())
+	ctx, cancel := context.WithTimeout(ctx, connection.Timeout())
 	defer cancel()
 
 	rows, err := connection.Pool().QueryContext(ctx, sql, args...)
