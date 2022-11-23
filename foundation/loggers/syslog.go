@@ -19,7 +19,7 @@ import (
 type Syslog struct {
 	Path           string
 	Facility       syslog.Facility
-	group          string // MSGID intended for filtering
+	group         string // MSGID intended for filtering
 	Writer         io.Writer
 	Permission     os.FileMode
 	MinLevel       log_level.Level
