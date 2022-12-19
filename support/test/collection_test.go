@@ -205,4 +205,19 @@ func Test_collection_not_empty(t *testing.T) {
 	require.False(t, data.Empty())
 }
 
+func Test_collection_where_slice_has_value(t *testing.T) {
+    data := support.NewCollection([]map[string]interface{}{
+		{
+			"color": "blue",
+		},
+		{
+			"color": "red",
+		},
+	})
+
+	result := data.Where("color", "=", "blue")
+
+    require.Equal(t, 1, len(result))
+}
+
 var emptyInterface interface{}
