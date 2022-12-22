@@ -232,4 +232,32 @@ func Test_collection_where_slice_has_other_integer(t *testing.T) {
 	require.Equal(t, 1, len(result))
 }
 
+func Test_collection_join_one(t *testing.T) {
+	data := support.NewCollection([]map[string]interface{}{
+		{
+			"id": 32,
+		},
+	},
+	)
+
+	result := data.Join("id", ", ")
+
+	require.Equal(t, "32", result)
+}
+
+func Test_collection_join_multiple(t *testing.T) {
+    data := support.NewCollection([]map[string]interface{}{
+        {
+            "id": 32,
+            },
+            {
+            "id": 43,
+            },
+            })
+
+    result := data.Join("id", ", ")
+
+    require.Equal(t, "32, 43", result)
+}
+
 var emptyInterface interface{}

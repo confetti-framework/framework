@@ -5,6 +5,7 @@ import (
     "github.com/spf13/cast"
     "reflect"
 	"strconv"
+    "strings"
 )
 
 type Collection []Value
@@ -208,4 +209,31 @@ func (c Collection) WhereE(key string, operator string, expected interface{}) (C
         }
     }
     return result, err
+}
+
+// Join concatenates the elements of its first argument to create a single string. The separator
+// string sep is placed between elements in the resulting string.
+func (c Collection) Join(key string, sep string) string {
+    result, err := c.JoinE(key, sep)
+    if err != nil {
+        panic(err)
+    }
+    return result
+}
+
+// JoinE concatenates the elements of its first argument to create a single string. The separator
+// string sep is placed between elements in the resulting string.
+func (c Collection) JoinE(key string, sep string) (string, error) {
+    parts := []string{}
+    for _, value := range c {
+        part, err := value.Get(key).StringE()
+        if err != nil {
+            return "", err
+        }
+        parts = append(parts, part)
+    }
+
+    result := strings.Join(parts, sep)
+
+    return result, nil
 }
