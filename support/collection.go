@@ -2,7 +2,8 @@ package support
 
 import (
 	"github.com/confetti-framework/errors"
-	"reflect"
+    "github.com/spf13/cast"
+    "reflect"
 	"strconv"
 )
 
@@ -183,12 +184,28 @@ func (c Collection) Empty() bool {
 }
 
 func (c Collection) Where(key string, operator string, expected interface{}) Collection {
+    result, err := c.WhereE(key, operator, expected)
+    if err != nil {
+        panic(err)
+    }
+    return result
+}
+
+func (c Collection) WhereE(key string, operator string, expected interface{}) (Collection, error) {
     result := NewCollection()
+    var err error
     for _, item := range c {
-        compareValue := item.Get(key).Raw()
-        if compareValue == expected {
+        compareValue, err := cast.ToStringE(item.Get(key).Raw())
+        if err != nil {
+            err = errors.New("can't compare values to handle the Where(E) method, because we need to cast compare value to string")
+        }
+        expectedValue, err := cast.ToStringE(cast.ToString(expected))
+        if err != nil {
+            err = errors.New("can't compare values to handle the Where(E) method, because we need to cast expected value to string")
+        }
+        if compareValue == expectedValue {
             result = result.Push(item)
         }
     }
-    return result
+    return result, err
 }

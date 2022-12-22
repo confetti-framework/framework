@@ -206,7 +206,7 @@ func Test_collection_not_empty(t *testing.T) {
 }
 
 func Test_collection_where_slice_has_value(t *testing.T) {
-    data := support.NewCollection([]map[string]interface{}{
+	data := support.NewCollection([]map[string]interface{}{
 		{
 			"color": "blue",
 		},
@@ -217,7 +217,19 @@ func Test_collection_where_slice_has_value(t *testing.T) {
 
 	result := data.Where("color", "=", "blue")
 
-    require.Equal(t, 1, len(result))
+	require.Equal(t, 1, len(result))
+}
+
+func Test_collection_where_slice_has_other_integer(t *testing.T) {
+	data := support.NewCollection([]map[string]interface{}{
+		{
+			"age": int64(5),
+		},
+	})
+
+	result := data.Where("age", "=", int(5))
+
+	require.Equal(t, 1, len(result))
 }
 
 var emptyInterface interface{}
