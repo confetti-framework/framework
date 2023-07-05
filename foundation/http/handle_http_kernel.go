@@ -62,6 +62,9 @@ func exposeResponse(response net.ResponseWriter, appResponse inter.Response) {
 	response.WriteHeader(appResponse.GetStatus())
 
 	// Add HTTP body
+	if appResponse.GetStatus() == net.StatusNoContent {
+		return
+	}
 	_, err := response.Write([]byte(appResponse.GetBody()))
 	if err != nil {
 		panic(err)
