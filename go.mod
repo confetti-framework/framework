@@ -7,7 +7,6 @@ require (
 	github.com/confetti-framework/errors v0.12.0
 	github.com/confetti-framework/syslog v0.1.1
 	github.com/go-sql-driver/mysql v1.7.0
-	github.com/google/uuid v1.3.0
 	github.com/gorilla/mux v1.8.0
 	github.com/jackc/pgconn v1.14.0
 	github.com/jackc/pgx/v4 v4.18.0
