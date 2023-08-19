@@ -1,11 +1,13 @@
 package console
 
 import (
-	"github.com/confetti-framework/framework/foundation/http"
-	"github.com/confetti-framework/framework/inter"
+	"errors"
 	net "net/http"
 	"strconv"
 	"time"
+
+	"github.com/confetti-framework/framework/foundation/http"
+	"github.com/confetti-framework/framework/inter"
 )
 
 // AppServe starts the http server to handle requests.
@@ -28,6 +30,7 @@ func (s AppServe) Description() string {
 func (s AppServe) Handle(c inter.Cli) inter.ExitCode {
 	app := c.App()
 	name := app.Make("config.App.Name").(string)
+	timeout := getTimeout(app)
 	appProvider := app.Make(inter.AppProvider).(func() inter.App)
 
 	// This bootstraps the framework and gets it ready for use, then it will load up
@@ -42,11 +45,12 @@ func (s AppServe) Handle(c inter.Cli) inter.ExitCode {
 	server := &net.Server{
 		Addr:         s.getListenAddr(app),
 		Handler:      net.HandlerFunc(handler),
-		WriteTimeout: 30 * time.Second,
-		ReadTimeout:  30 * time.Second,
+		WriteTimeout: timeout,
+		ReadTimeout:  timeout,
+		IdleTimeout:  timeout,
 	}
 
-	if err := server.ListenAndServe(); err != nil && err != net.ErrServerClosed {
+	if err := server.ListenAndServe(); err != nil && !errors.Is(err, net.ErrServerClosed) {
 		c.Error("Could not %s", err)
 		return inter.Failure
 	}
@@ -54,6 +58,14 @@ func (s AppServe) Handle(c inter.Cli) inter.ExitCode {
 	c.Info("Server stopped")
 
 	return inter.Success
+}
+
+func getTimeout(app inter.App) time.Duration {
+	timeoutRaw, err := app.MakeE("config.App.Timeout")
+	if err != nil {
+		return 30 * time.Second
+	}
+	return timeoutRaw.(time.Duration)
 }
 
 func (s AppServe) getPortAddr(app inter.App) string {
@@ -91,3 +103,4 @@ func (s AppServe) getHumanAddr(app inter.App) interface{} {
 	}
 	return "http://localhost:" + s.getPortAddr(app)
 }
+
