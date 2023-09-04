@@ -10,7 +10,7 @@ func redirectController(request inter.Request) inter.Response {
 	if rawRoute == nil {
 		panic("no route found in request")
 	}
-	route := rawRoute.(Route)
+	route := rawRoute.(*Route)
 	options := route.routeOptions
 	return outcome.Redirect(options.destination, options.status)
 }

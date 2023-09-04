@@ -23,7 +23,7 @@ func (r Route) Uri() string {
 	return r.uri
 }
 
-func (r Route) SetUri(uri string) inter.Route {
+func (r *Route) SetUri(uri string) inter.Route {
 	r.uri = uri
 
 	return r
@@ -33,7 +33,7 @@ func (r Route) Domain() string {
 	return r.domain
 }
 
-func (r Route) SetDomain(domain string) inter.Route {
+func (r *Route) SetDomain(domain string) inter.Route {
 	r.domain = domain
 
 	return r
@@ -51,20 +51,20 @@ func (r Route) Controller() inter.Controller {
 	return r.controller
 }
 
-func (r Route) SetPrefix(prefix string) inter.Route {
+func (r *Route) SetPrefix(prefix string) inter.Route {
 	// If a prefix is added at a higher level, it must apply at the beginning of the url
 	r.routeOptions.prefixes = append([]string{prefix}, r.routeOptions.prefixes...)
 
 	return r
 }
 
-func (r Route) SetDestination(destination string) inter.Route {
+func (r *Route) SetDestination(destination string) inter.Route {
 	r.routeOptions.destination = destination
 
 	return r
 }
 
-func (r Route) SetStatus(status int) inter.Route {
+func (r *Route) SetStatus(status int) inter.Route {
 	r.routeOptions.status = status
 
 	return r
@@ -80,7 +80,7 @@ func (r Route) Name() string {
 }
 
 // Push or change the route name.
-func (r Route) SetName(name string) inter.Route {
+func (r *Route) SetName(name string) inter.Route {
 	r.routeOptions.name = name + r.routeOptions.name
 
 	return r
@@ -102,7 +102,7 @@ func (r Route) Named(patterns ...string) bool {
 	return false
 }
 
-func (r Route) SetConstraint(parameter string, regex string) inter.Route {
+func (r *Route) SetConstraint(parameter string, regex string) inter.Route {
 	if r.routeOptions.constraints == nil {
 		r.routeOptions.constraints = make(map[string]string)
 	}
@@ -116,7 +116,7 @@ func (r Route) Middleware() []inter.HttpMiddleware {
 	return r.middlewares
 }
 
-func (r Route) SetMiddleware(middlewaresToStore []inter.HttpMiddleware) inter.Route {
+func (r *Route) SetMiddleware(middlewaresToStore []inter.HttpMiddleware) inter.Route {
 	excluded := getRouteNames(r.routeOptions.excludeMiddlewares)
 
 	// validate and sort the middlewares
@@ -133,7 +133,7 @@ func (r Route) SetMiddleware(middlewaresToStore []inter.HttpMiddleware) inter.Ro
 	return r
 }
 
-func (r Route) SetExcludeMiddleware(middlewares []inter.HttpMiddleware) inter.Route {
+func (r *Route) SetExcludeMiddleware(middlewares []inter.HttpMiddleware) inter.Route {
 	r.routeOptions.excludeMiddlewares = append(r.routeOptions.excludeMiddlewares, middlewares...)
 
 	return r
