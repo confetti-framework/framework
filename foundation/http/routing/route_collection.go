@@ -228,9 +228,9 @@ func flatten(collections []inter.RouteCollection) inter.RouteCollection {
 	return result
 }
 
-func (c RouteCollection) getErrorRoute(err error) *Route {
+func (c RouteCollection) getErrorRoute(err error) Route {
 	status, _ := errors.FindStatus(err)
-	r := &Route{
+	r := Route{
 		controller: func(request inter.Request) inter.Response {
 			return outcome.Html(err)
 		},
