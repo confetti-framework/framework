@@ -17,7 +17,7 @@ type RouteCollection struct {
 	middlewares     []inter.HttpMiddleware
 }
 
-func NewRouteCollection(routeCollections ...inter.RouteCollection) RouteCollection {
+func NewRouteCollection(routeCollections ...inter.RouteCollection) *RouteCollection {
 	collection := RouteCollection{}
 	collection.Merge(flatten(routeCollections))
 	collection.decorators = []inter.RouteDecorator{
@@ -30,18 +30,18 @@ func NewRouteCollection(routeCollections ...inter.RouteCollection) RouteCollecti
 	return &collection
 }
 
-func Group(routeCollections ...inter.RouteCollection) RouteCollection {
+func Group(routeCollections ...inter.RouteCollection) *RouteCollection {
 	return NewRouteCollection(routeCollections...)
 }
 
-func DecorateRoutes(routes RouteCollection) {
+func DecorateRoutes(routes *RouteCollection) {
 	for _, route := range routes.All() {
 		route_decorator.Decorate(route, routes.decorators)
 	}
 	routes.decorators = []inter.RouteDecorator{}
 }
 
-func (c RouteCollection) Push(route inter.Route) inter.RouteCollection {
+func (c *RouteCollection) Push(route inter.Route) inter.RouteCollection {
 	if c.routesMapRoutes == nil {
 		c.routesMapRoutes = make(inter.MapMethodRoutes)
 	}
@@ -54,7 +54,7 @@ func (c RouteCollection) Push(route inter.Route) inter.RouteCollection {
 	return c
 }
 
-func (c RouteCollection) Merge(routeCollection inter.RouteCollection) inter.RouteCollection {
+func (c *RouteCollection) Merge(routeCollection inter.RouteCollection) inter.RouteCollection {
 	for _, route := range routeCollection.All() {
 		c.Push(route)
 	}
@@ -99,7 +99,7 @@ func (c RouteCollection) Match(request inter.Request) inter.Route {
 }
 
 // Set a group of global where patterns on the routes.
-func (c RouteCollection) Where(parameter, regex string) inter.RouteCollection {
+func (c *RouteCollection) Where(parameter, regex string) inter.RouteCollection {
 	for _, route := range c.routes {
 		route.SetConstraint(parameter, regex)
 	}
@@ -107,7 +107,7 @@ func (c RouteCollection) Where(parameter, regex string) inter.RouteCollection {
 	return c
 }
 
-func (c RouteCollection) WhereMulti(constraints map[string]string) inter.RouteCollection {
+func (c *RouteCollection) WhereMulti(constraints map[string]string) inter.RouteCollection {
 	for parameter, regex := range constraints {
 		c.Where(parameter, regex)
 	}
@@ -115,7 +115,7 @@ func (c RouteCollection) WhereMulti(constraints map[string]string) inter.RouteCo
 	return c
 }
 
-func (c RouteCollection) Domain(domain string) inter.RouteCollection {
+func (c *RouteCollection) Domain(domain string) inter.RouteCollection {
 	for _, route := range c.routes {
 		route.SetDomain(domain)
 	}
@@ -123,7 +123,7 @@ func (c RouteCollection) Domain(domain string) inter.RouteCollection {
 	return c
 }
 
-func (c RouteCollection) Prefix(prefix string) inter.RouteCollection {
+func (c *RouteCollection) Prefix(prefix string) inter.RouteCollection {
 	for _, route := range c.routes {
 		route.SetPrefix(prefix)
 	}
@@ -131,7 +131,7 @@ func (c RouteCollection) Prefix(prefix string) inter.RouteCollection {
 	return c
 }
 
-func (c RouteCollection) Name(name string) inter.RouteCollection {
+func (c *RouteCollection) Name(name string) inter.RouteCollection {
 	for _, route := range c.routes {
 		route.SetName(name)
 	}
@@ -139,7 +139,7 @@ func (c RouteCollection) Name(name string) inter.RouteCollection {
 	return c
 }
 
-func (c RouteCollection) Middleware(middleware ...inter.HttpMiddleware) inter.RouteCollection {
+func (c *RouteCollection) Middleware(middleware ...inter.HttpMiddleware) inter.RouteCollection {
 	for _, route := range c.routes {
 		route.SetMiddleware(middleware)
 	}
@@ -149,7 +149,7 @@ func (c RouteCollection) Middleware(middleware ...inter.HttpMiddleware) inter.Ro
 	return c
 }
 
-func (c RouteCollection) WithoutMiddleware(middleware ...inter.HttpMiddleware) inter.RouteCollection {
+func (c *RouteCollection) WithoutMiddleware(middleware ...inter.HttpMiddleware) inter.RouteCollection {
 	for _, route := range c.routes {
 		route.SetExcludeMiddleware(middleware)
 	}
@@ -158,7 +158,7 @@ func (c RouteCollection) WithoutMiddleware(middleware ...inter.HttpMiddleware) i
 }
 
 // Set the (redirect) destination url
-func (c RouteCollection) setDestination(destination string) RouteCollection {
+func (c *RouteCollection) setDestination(destination string) *RouteCollection {
 	for _, route := range c.routes {
 		route.SetDestination(destination)
 	}
@@ -167,7 +167,7 @@ func (c RouteCollection) setDestination(destination string) RouteCollection {
 }
 
 // Set the http status
-func (c RouteCollection) setStatus(status int) RouteCollection {
+func (c *RouteCollection) setStatus(status int) *RouteCollection {
 	for _, route := range c.routes {
 		route.SetStatus(status)
 	}
@@ -179,7 +179,7 @@ func (c RouteCollection) getByMethod(method string) []inter.Route {
 	return c.routesMapRoutes[method]
 }
 
-func (c RouteCollection) matchAgainstRoutes(routes []inter.Route, request inter.Request) (inter.Route, bool) {
+func (c *RouteCollection) matchAgainstRoutes(routes []inter.Route, request inter.Request) (inter.Route, bool) {
 	source := request.Source()
 	var match mux.RouteMatch
 
