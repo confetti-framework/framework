@@ -27,7 +27,7 @@ func NewRouteCollection(routeCollections ...inter.RouteCollection) RouteCollecti
 		route_decorator.UriSuffixSlash{},
 	}
 
-	return &collection
+	return collection
 }
 
 func Group(routeCollections ...inter.RouteCollection) RouteCollection {
@@ -69,10 +69,10 @@ func (c RouteCollection) All() []inter.Route {
 func (c RouteCollection) Match(request inter.Request) inter.Route {
 	// Normally, the routes are already decorated. In that case, no decorators
 	// are present.
-	DecorateRoutes(&c)
+	DecorateRoutes(c)
 	routes, _ := request.App().MakeE("routes")
 	if routes == nil {
-		request.App().Singleton("routes", &c)
+		request.App().Singleton("routes", c)
 	}
 
 	routesWithUrl := c.getByMethod(request.Method())
@@ -219,7 +219,7 @@ func (c RouteCollection) hasAlternateMethod(request inter.Request) bool {
 }
 
 func flatten(collections []inter.RouteCollection) inter.RouteCollection {
-	result := &RouteCollection{}
+	result := RouteCollection{}
 
 	for _, collection := range collections {
 		result.Merge(collection)
@@ -228,9 +228,9 @@ func flatten(collections []inter.RouteCollection) inter.RouteCollection {
 	return result
 }
 
-func (c RouteCollection) getErrorRoute(err error) *Route {
+func (c RouteCollection) getErrorRoute(err error) Route {
 	status, _ := errors.FindStatus(err)
-	r := &Route{
+	r := Route{
 		controller: func(request inter.Request) inter.Response {
 			return outcome.Html(err)
 		},
