@@ -2,7 +2,7 @@ package routing
 
 import "github.com/confetti-framework/framework/inter"
 
-func createRoutes(methods []string, uri string, controller inter.Controller) *RouteCollection {
+func createRoutes(methods []string, uri string, controller inter.Controller) RouteCollection {
 	routes := NewRouteCollection()
 	for _, method := range methods {
 		route := NewRoute(uri, method, controller)
@@ -12,7 +12,7 @@ func createRoutes(methods []string, uri string, controller inter.Controller) *Ro
 	return routes
 }
 
-func createRoute(method string, uri string, controller inter.Controller) *RouteCollection {
+func createRoute(method string, uri string, controller inter.Controller) RouteCollection {
 	methods := []string{method}
 	return createRoutes(methods, uri, controller)
 }
